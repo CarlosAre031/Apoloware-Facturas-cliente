@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura APOLO para Champion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+            background-color: #f0f0f0;
+        }
+        .invoice-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .invoice {
+            padding: 40px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            max-width: 150px;
+            max-height: 150px;
+        }
+        h1 {
+            color: #8B0000;
+            margin: 20px 0;
+            font-size: 36px;
+        }
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .client-details, .company-details {
+            width: 45%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #8B0000;
+            color: white;
+        }
+        .total {
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .notes, .payment-info {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .thank-you {
+            text-align: center;
+            font-style: italic;
+            color: #8B0000;
+            font-size: 18px;
+        }
+        .pdf-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            background-color: #8B0000;
+            color: white;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .invoice-container {
+                width: 215.9mm;
+                height: 279.4mm;
+                box-shadow: none;
+            }
+            .invoice {
+                padding: 15mm;
+            }
+            .pdf-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice" id="invoice">
+            <div class="header">
+                <img src="/imagen/LogoHome.png" alt="APOLO Logo" class="logo">
+            </div>
+            <div class="invoice-details">
+                <div class="client-details">
+                    <strong>Para:</strong><br>
+                    CHAMPION<br>
+                    Juan Sanchez
+                </div>
+                <div class="company-details">
+                    <strong>De:</strong><br>
+                    Jhan Carlos Arevalo & Laura Sofia Gutierrez<br>
+                    Tel: 3172718872<br>
+                    Email: Carlos2525x@gmail.com | Laurasofiagd1003@gmail.com
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Desarrollo de página web de rifas Champion</td>
+                        <td>$300,000</td>
+                        <td>$300,000</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Hosting (12 meses) + SSL + Email corporativo</td>
+                        <td>$60,000</td>
+                        <td>$60,000</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Dominio .com o .co</td>
+                        <td>$40,000</td>
+                        <td>$40,000</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Soporte por 6 meses</td>
+                        <td>$0</td>
+                        <td>$0</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="total">
+                <p><strong>Subtotal:</strong> $400,000</p>
+                <p><strong>Descuento por referido:</strong> $200,000</p>
+                <p><strong>Total:</strong> $400,000</p>
+            </div>
+            <div class="payment-info">
+                <h3>Método de pago:</h3>
+                <p>50% de anticipo: $200,000<br>
+                50% al finalizar: $200,000</p>
+
+            </div>
+            <div class="notes">
+                <strong>Notas:</strong>
+                <ul>
+                    <li>El plazo de desarrollo es de 1 mes.</li>
+                    <li>El precio del hosting puede cambiar en 2025.</li>
+                    <li>Los gastos de pasarela de pago no están incluidos.</li>
+                    <li>Incluye soporte gratuito por 6 meses para fallos y caídas del sitio web.</li>
+                </ul>
+            </div>
+            <div class="thank-you">
+                <p>¡Gracias por confiar en APOLO!</p>
+            </div>
+        </div>
+    </div>
+    <button class="pdf-button" onclick="generatePDF()">Generar PDF</button>
+    <script src="invoice.js"></script>
+</body>
+</html>
