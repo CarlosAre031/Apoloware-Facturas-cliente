@@ -31,7 +31,7 @@ function generatePDF() {
     // Función para ajustar el contenido si es demasiado largo
     function adjustContent() {
         const currentHeight = elementCopy.offsetHeight;
-        const maxHeight = 970 - 0; // 279.4mm (altura carta) - 20mm (margen total)
+        const maxHeight = 950 - 0; // 279.4mm (altura carta) - 20mm (margen total)
         if (currentHeight > maxHeight) {
             const scale = maxHeight / currentHeight;
             elementCopy.style.transform = `scale(${scale})`;
